@@ -36,7 +36,7 @@
 
         <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
             <div class="bg-white px-6 py-8 shadow-xl rounded-2xl border border-slate-100">
-                <form id="formLogin" class="space-y-6">
+                <form id="formLogin" onsubmit="event.preventDefault();" class="space-y-6">
                     <div>
                         <label for="username" class="block text-sm font-medium text-slate-700">ชื่อผู้ใช้ (Username)</label>
                         <div class="mt-1">
@@ -252,8 +252,8 @@
         // =========================================================================
         // 1. CONFIGURATION SUPABASE (ใช้ตัวแปร Placeholder เพื่อให้ GitHub Actions แทนที่ค่าจริง)
         // =========================================================================
-        const SUPABASE_URL = "https://mrvvxmbhiuxgqzyniycz.supabase.co"; 
-        const SUPABASE_ANON_KEY = "sb_publishable_GbWn5rxUCctIpYzZiFrlBQ_kqAFH0QV";
+        const SUPABASE_URL = "___SUPABASE_URL_PLACEHOLDER___"; 
+        const SUPABASE_ANON_KEY = "___SUPABASE_ANON_KEY_PLACEHOLDER___";
 
         // ระบบจะทำงานได้เมื่อถูกแทนที่ค่าจริงผ่านระบบ CI/CD ของ GitHub แล้วเท่านั้น
         const dbClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -309,7 +309,7 @@
                     // ล็อกอินสำเร็จ
                     errDiv.classList.add('hidden-view');
                     currentUser = data;
-                    renderAppByRole();
+                    await renderAppByRole();
                 } catch (err) {
                     console.error(err);
                     errDiv.classList.remove('hidden-view');
