@@ -11,6 +11,7 @@ permissions:
 
 jobs:
   deploy:
+    # 🌟 เพิ่ม 2 บรรทัดนี้เข้าไปเพื่อให้ GitHub ทราบสิทธิ์และสถานที่สำหรับนำเว็บไปเปิดใช้งาน
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
